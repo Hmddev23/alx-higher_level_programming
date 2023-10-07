@@ -1,4 +1,6 @@
-#include "lists.h"
+#include"lists.h"
+
+int is_palindrome(listint_t **head);
 
 /**
   * res_lists - Reverse a linked list in place.
@@ -33,31 +35,38 @@ listint_t *res_lists(listint_t **head)
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *slow = *head;
-	listint_t *fast = *head;
+	listint_t *tmp, *rev, *mid;
+	size_t size = 0, i;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
-	while (fast->next != NULL && fast->next->next != NULL)
+	tmp = *head;
+	while (tmp)
 	{
-		slow = slow->next;
-		fast = fast->next->next;
+		size++;
+		tmp = tmp->next;
 	}
+	tmp = *head;
+	for (i = 0; i < (size / 2) - 1; i++)
+		tmp = tmp->next;
 
-	listint_t *second_half = slow->next;
-	res_lists(&second_half);
+	if ((size % 2) == 0 && tmp->n != tmp->next->n)
+		return (0);
 
-	listint_t *first_half = *head;
-	while (second_half != NULL)
+	tmp = tmp->next->next;
+	rev = res_lists(&tmp);
+	mid = rev;
+
+	tmp = *head;
+	while (rev)
 	{
-		if (first_half->n != second_half->n)
+		if (tmp->n != rev->n)
 			return (0);
-		first_half = first_half->next;
-		second_half = second_half->next;
+		tmp = tmp->next;
+		rev = rev->next;
 	}
-
-	res_lists(&slow->next);
+	res_lists(&mid);
 
 	return (1);
 }
