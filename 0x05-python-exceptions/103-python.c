@@ -21,7 +21,7 @@ void print_python_bytes(PyObject *p)
 
 	if (strcmp(p—>ob_type—>tp_name, "bytes"))
 	{
-		printf("  [ERROR] Invalid Bytes Object\n") ;
+		printf("	[ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
@@ -29,13 +29,13 @@ void print_python_bytes(PyObject *p)
 	string = ((PyBytesObject *)p)—>ob_sval;
 	length = size + 1 > 10 ? 10 : size + 1;
 
-	printf("  size: %lu\n", size);
-	printf("  trying string: %s\n", string);
-	printf("  first %lu bytes: ", length);
+	printf("	size: %lu\n", size);
+	printf("	trying string: %s\n", string);
+	printf("	first %lu bytes: ", length);
 
 	for (i = 0; i < length; i++)
 	{
-		printf("%02hhx%s", string[i], i + 1 < length ? " " : " ");
+		printf("%02hhx%s", string[i], i + 1 < length ? " " : "");
 	}
 	printf("\n");
 }
@@ -56,7 +56,7 @@ void print_python_float(PyObject *p)
 	printf("[.] float object info\n");
 	if (strcmp(p->ob_type->tp_name, "float"))
 	{
-		printf("  [ERROR] Invalid Float Object\n");
+		printf("	[ERROR] Invalid Float Object\n");
 		return;
 	}
 	dbl = ((PyFloatObject *)p)->ob_fval;
@@ -89,7 +89,7 @@ void print_python_list(PyObject *p)
 	for (i = 0; i < ((PyVarObject *)p)->ob_size; i++)
 	{
 		printf("Element %d: %s\n", i,
-			((PyListObject *)p)->ob_item[i]->ob_type_tp_name);
+			((PyListObject *)p)->ob_item[i]->ob_type->tp_name);
 
 		if (!strcmp(((PyListObject *)p)->ob_item[i]->ob_type->tp_name, "bytes"))
 			print_python_bytes(((PyListObject *)p)->ob_item[i]);
