@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <Python.h>
 #include <floatobject.h>
 
@@ -19,19 +20,19 @@ void print_python_bytes(PyObject *p)
 	setbuf(stdout, NULL);
 	printf("[.] bytes object info\n");
 
-	if (strcmp(p—>ob_type—>tp_name, "bytes"))
+	if (strcmp(p->ob_type->tp_name, "bytes"))
 	{
-		printf("	[ERROR] Invalid Bytes Object\n");
+		printf("    [ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
-	size = ((PyVarObject *)p)—>ob_size;
-	string = ((PyBytesObject *)p)—>ob_sval;
-	length = size + 1 > 10 ? 10 : size + 1;
+	size = PyBytes_Size(p);
+	string = PyBytes_AsString(p);
+	length = size > 10 ? 10 : size;
 
-	printf("	size: %lu\n", size);
-	printf("	trying string: %s\n", string);
-	printf("	first %lu bytes: ", length);
+	printf("    size: %lu\n", size);
+	printf("    trying string: %s\n", string);
+	printf("    first %lu bytes: ", length);
 
 	for (i = 0; i < length; i++)
 	{
