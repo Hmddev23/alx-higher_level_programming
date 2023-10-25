@@ -24,7 +24,7 @@ class Node:
     def data(self, value):
         if not isinstance(value, int):
             raise TypeError("data must be an integer")
-            self.__data = value
+        self.__data = value
 
     @property
     def next_node(self):
@@ -35,7 +35,7 @@ class Node:
     def next_node(self, value):
         if not isinstance(value, Node) and value is not None:
             raise TypeError("next_node must be a Node object")
-            self.__next_node = value
+        self.__next_node = value
 
 
 class SinglyLinkedList:
@@ -62,11 +62,11 @@ class SinglyLinkedList:
             self.__head = new
         else:
             tmp = self.__head
-        while (tmp.next_node is not None and
-                tmp.next_node.data < value):
-            tmp = tmp.next_node
-        new.next_node = tmp.next_node
-        tmp.next_node = new
+            while (tmp.next_node is not None and
+                    tmp.next_node.data < value):
+                tmp = tmp.next_node
+            new.next_node = tmp.next_node
+            tmp.next_node = new
 
     def __str__(self):
         """Print() representation of a singly linked list"""
