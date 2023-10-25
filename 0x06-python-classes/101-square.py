@@ -4,6 +4,7 @@
 
 class Square:
     """define class Square constructor"""
+
     def __init__(self, size=0, position=(0, 0)):
         """initialization of the new square
 
