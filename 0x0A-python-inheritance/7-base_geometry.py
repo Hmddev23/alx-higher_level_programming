@@ -3,7 +3,7 @@
 
 
 class BaseGeometry:
-"""representation of the class"""
+    """representation of the class"""
 
     def area(self):
         """no implementation"""
