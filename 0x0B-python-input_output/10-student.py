@@ -3,7 +3,7 @@
 
 
 class Student:
-""" get the representation of a dictionary from a Student instance"""
+    """ get the representation of a dictionary from a Student instance"""
 
     def __init__(self, first_name, last_name, age):
         """instantiation of the class attributes"""
