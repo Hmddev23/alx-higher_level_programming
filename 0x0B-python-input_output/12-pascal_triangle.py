@@ -8,11 +8,15 @@ def pascal_triangle(n):
         return []
 
     n_list = [[1]]
-    for i in range(n - 1):
-        tmp_val = [0] + n_list[-1] + [0]
-        l_row = []
-        for j in range(len(n_list[-1]) + 1):
-            l_row.append(tmp_val[j] + tmp_val[j + 1])
-        n_list.append(l_row)
+    for _ in range(1, n):
+        p_row = n_list[-1]
+        n_row = [1]
+
+        for i in range(1, len(p_row)):
+            new_element = p_row[i - 1] + p_row[i]
+            n_row.append(new_element)
+
+        n_row.append(1)
+        n_list.append(n_row)
 
     return n_list
