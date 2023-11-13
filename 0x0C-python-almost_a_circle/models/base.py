@@ -40,3 +40,18 @@ class Base:
         else:
             new = None
         new.update(**dictionary)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """write the serialization JSON of a list of objects to a file.
+
+        Args:
+            list_objs (list): List of Base instances.
+        """
+        filename = cls.__name__ + ".json"
+        with open(filename, "w") as jsonfile:
+            if list_objs is None:
+                jsonfile.write("[]")
+            else:
+                list_dicts = [o.to_dictionary() for o in list_objs]
+                jsonfile.write(Base.to_json_string(list_dicts))
