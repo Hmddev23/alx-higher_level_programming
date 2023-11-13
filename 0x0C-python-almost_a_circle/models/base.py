@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """define the Base model class"""
+from json import dumps, loads
+import csv
 
 
 class Base:
