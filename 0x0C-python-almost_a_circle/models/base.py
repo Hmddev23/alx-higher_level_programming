@@ -5,13 +5,7 @@ import csv
 
 
 class Base:
-    """Base class model.
-
-    representation of the "base" for all other classes in this project.
-
-    private class Attributes:
-        __nb_object (int): number of Base instances.
-    """
+    """representation of the "base" for all other classes in this project"""
 
     __nb_objects = 0
 
