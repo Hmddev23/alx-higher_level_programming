@@ -58,11 +58,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """return the deserialization of a JSON string.
-
-        Args:
-            json_string (str): JSON string representation of a list of dictionaries.
-        """
+        """return the deserialization of a JSON string."""
         if json_string is None or not json_string:
             return []
         return loads(json_string)
