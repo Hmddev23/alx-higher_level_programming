@@ -99,11 +99,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """write the CSV serialization of a list of objects to a file.
-
-        Args:
-            list_objs (list): List of inherited Base instances.
-        """
+        """write the CSV serialization of a list of objects to a file"""
         from models.rectangle import Rectangle
         from models.square import Square
         if list_objs is not None:
@@ -120,13 +116,7 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """return the list of classes instantiated from a CSV file.
-
-        read from `<cls.__name__>.csv`.
-
-        return:
-            list of instantiated classes.
-        """
+        """return the list of classes instantiated from a CSV file"""
         from models.rectangle import Rectangle
         from models.square import Square
         ret = []
