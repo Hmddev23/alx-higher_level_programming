@@ -104,8 +104,49 @@ class Rectangle(Base):
             format(type(self).__name__, self.id, self.x, self.y, self.width,
                    self.height)
 
-    def display(self):
-        """print the rectangle using the `#` character"""
-        s = '\n' * self.y + \
-            (' ' * self.x + '#' * self.width + '\n') * self.height
-        print(s, end='')
+    def update(self, *args, **kwargs):
+        """update the rectangle
+
+        Args:
+            *args (ints): New attribute values.
+            - 1st argument represents id attribute
+            - 2nd argument represents Width attribute
+            - 3rd argument represent Height attribute
+            - 4th argument represents X attribute
+            - 5th argument represents Y attribute
+        **kwargs (dict): New key/value pairs of attributes.
+        """
+        if args and len(args) != 0:
+            a = 0
+            for arg in args:
+                if a == 0:
+                    if arg is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = arg
+                elif a == 1:
+                    self.width = arg
+                elif a == 2:
+                    self.height = arg
+                elif a == 3:
+                    self.x = arg
+                elif a == 4:
+                    self.y = arg
+                a += 1
+
+        elif kwargs and len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == "id":
+                    if v is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = v
+                elif k == "width":
+                    self.width = v
+                elif k == "height":
+                    self.height = v
+                elif k == "x":
+                    self.x = v
+                elif k == "y":
+                    self.y = v
+
