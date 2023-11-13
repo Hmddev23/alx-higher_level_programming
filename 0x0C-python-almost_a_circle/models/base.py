@@ -97,8 +97,8 @@ class Base:
             with open(filename, "r") as jsonfile:
                 list_dicts = Base.from_json_string(jsonfile.read())
                 return [cls.create(**d) for d in list_dicts]
-            except IOError:
-                return []
+        except IOError:
+            return []
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -138,7 +138,7 @@ class Base:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
                 list_dicts = [dict([k, int(v)] for k, v in d.items())
-                    for d in list_dicts]
+                                for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
