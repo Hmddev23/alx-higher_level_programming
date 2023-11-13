@@ -31,3 +31,31 @@ class Square(Rectangle):
     def size(self, value):
         self.width = value
         self.height = value
+
+    def __update(self, id=None, size=None, x=None, y=None):
+        """system method that updates instance attributes via */**args"""
+        if id is not None:
+            self.id = id
+        if size is not None:
+            self.size = size
+        if x is not None:
+            self.x = x
+        if y is not None:
+            self.y = y
+
+    def update(self, *args, **kwargs):
+        """update the square
+
+        Args:
+            *args (ints): New attribute values.
+                - 1st argument represents id attribute
+                - 2nd argument represents size attribute
+                - 3rd argument represents x attribute
+                - 4th argument represents y attribute
+            **kwargs (dict): New key/value pairs of attributes.
+        """
+        if args:
+            self.__update(*args)
+        elif kwargs:
+            self.__update(**kwargs)
+
