@@ -99,7 +99,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """write the CSV serialization"""
+        """save object into csv file."""
         from models.rectangle import Rectangle
         from models.square import Square
         if list_objs is not None:
@@ -116,7 +116,7 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """return a list of class instances from a CSV file"""
+        """Load object into CSV file"""
         from models.rectangle import Rectangle
         from models.square import Square
         ret = []
