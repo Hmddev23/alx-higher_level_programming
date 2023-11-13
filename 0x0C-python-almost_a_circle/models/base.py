@@ -62,3 +62,21 @@ class Base:
         if json_string is None or not json_string:
             return []
         return loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """return a class instantied from a dictionary of attributes.
+
+        Args:
+            **dictionary (dict): Key/value pairs.
+        """
+        from models.rectangle import Rectangle
+        from models.square import Square
+        if cls is Rectangle:
+            new = Rectangle(1, 1)
+        elif cls is Square:
+            new = Square(1)
+        else:
+            new = None
+        new.update(**dictionary)
+        return new
