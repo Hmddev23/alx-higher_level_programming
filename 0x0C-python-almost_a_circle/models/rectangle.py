@@ -135,4 +135,7 @@ class Rectangle(Base):
         elif kwargs:
             self.__update(**kwargs)
 
-
+    def to_dictionary(self):
+        """return representation of a rectangle in a dictionary"""
+        return {"id": self.id, "width": self.__width, "height": self.__height,
+                "x": self.__x, "y": self.__y}
