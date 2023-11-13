@@ -134,4 +134,34 @@ class Base:
                 ret.append(cls.create(**d))
         return ret
 
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """draw a rectangle and a square using the turtle module.
 
+        Args:
+            list_rectangles (list): List of Rectangle objects to draw.
+            list_squares (list): List of Square objects to draw.
+        """
+        import turtle
+        import time
+        from random import randrange
+        turtle.Screen().colormode(255)
+        for i in list_rectangles + list_squares:
+            t = turtle.Turtle()
+            t.color((randrange(255), randrange(255), randrange(255)))
+            t.pensize(1)
+            t.penup()
+            t.pendown()
+            t.setpos((i.x + t.pos()[0], i.y - t.pos()[1]))
+            t.pensize(10)
+            t.forward(i.width)
+            t.left(90)
+            t.forward(i.height)
+            t.left(90)
+            t.forward(i.width)
+            t.left(90)
+            t.forward(i.height)
+            t.left(90)
+            t.end_fill()
+
+        time.sleep(5)
