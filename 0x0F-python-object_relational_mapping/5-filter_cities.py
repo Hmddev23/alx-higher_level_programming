@@ -22,7 +22,7 @@ if __name__ == "__main__":
         WHERE states.name=%s""", (query,))
     rows = cur.fetchall()
     tmp = list(row[0] for row in rows)
-    print(*tmp, separt=", ")
+    print(*tmp, sep=", ")
 
     cur.close()
     db.close()
