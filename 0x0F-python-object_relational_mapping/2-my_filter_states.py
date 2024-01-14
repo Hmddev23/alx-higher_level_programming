@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
 list all states from the database hbtn_0e_0_usa
 """
 
@@ -15,12 +15,12 @@ if __name__ == "__main__":
         db=sys.argv[3],
         port=3306
     )
-    cursr = db.cursor()
-    cursr.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'"
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'"
         .format(sys.argv[4]))
-    rows = cursr.fetchall()
+    rows = cur.fetchall()
     for row in rows:
         print(row)
 
-    cursr.close()
+    cur.close()
     db.close()
